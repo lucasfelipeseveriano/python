@@ -1,0 +1,20 @@
+#Dowload GIT BASH Windows 64 bits
+#Instalar
+
+abrir o prompt do windows => CMD
+Navegar para o local => D:
+CD aula01
+dir
+
+
+#Comandos do GIT
+git init
+
+git config --global user.name "Lucas Felipe Severiano"
+git config --global user.email "lukasfelipeseveriano@gmail.com.br"
+
+git add .
+git commit -m "versao inicial"
+git branch -M aula03
+git remote add origin https://github.com/lucasfelipeseveriano/python.git
+git push -u origin aula03
