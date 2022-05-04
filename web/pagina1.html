@@ -1,0 +1,149 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>pagina</title>
+
+    <style>
+
+        #pagina{
+            width: 50%;
+            height: 100%;
+            background-color: mediumspringgreen;
+            margin:auto;
+        }
+
+        #imagem {
+            width: 70%;
+            margin: 0 0 0 150px;
+            border-color: aqua;
+            border-width: 10px;
+            border-style: solid;
+            border-radius: 80px;
+            cursor: pointer;  
+        }
+
+        footer{
+            text-align: center;
+            background-color:black;
+            color: blue;
+            padding: 3px;
+        }
+
+        footer a {
+            color:darkred;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+
+    </style>
+
+
+</head>
+<body onload="autoOpacidade()">
+ 
+    <div id="pagina" ></div>
+
+    <script>
+        var pagina = document.getElementById('pagina');
+        var indImagem = 1;
+        var opacidade = 1;
+        var reduzir = true;
+
+        pagina.innerHTML = '<h2>Exemplo for</h2>';
+        for (i=1; i<5; i++){
+            pagina.innerHTML += '<h3>' + i + '</h3>';
+        }
+
+        pagina.innerHTML += '<h2>Exemplo do while</h2>';
+        var i = 1;
+        do {
+            pagina.innerHTML += '<h3>' + i + '</h3>';
+            i++;
+        } while (i < 5);
+
+        pagina.innerHTML += '<img id="imagem" src="http://softgraf.com/img/img1.jpg" onclick="mudarOpacidade()"  />';
+
+        function trocarImagem(){
+            let imagem = document.getElementById('imagem');
+            indImagem++;
+            if (indImagem > 7)
+                indImagem = 1;
+            imagem.src  = "http://softgraf.com/img/img" + indImagem + ".jpg";
+        }
+
+        function mudarOpacidade(){
+            let imagem = document.getElementById('imagem');
+            if (reduzir)
+                opacidade -= 0.1;
+            else
+                opacidade += 0.1;
+
+            if (opacidade <= 0){
+                reduzir = false;
+                trocarImagem();
+            }else if (opacidade >= 4)
+                reduzir = true;
+
+
+            imagem.style.opacity = opacidade;
+        }
+
+        function autoOpacidade(){
+            setInterval("mudarOpacidade()", 30);
+        }
+
+
+    </script>
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium quasi deleniti doloremque hic sequi autem ex eos consequuntur et suscipit expedita, fugiat odio in inventore. Facilis voluptate sint voluptatem suscipit?
+    </p>
+
+    <label> Baixando arquivo</label>
+    <progress id="file" value="32" max="100"></progress>
+
+    <ol  type="I">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ol>
+
+    <ul style="list-style-type:decimal-leading-zero;">
+        <li>Café</li>
+        <li>Chá</li>
+        <li>Leite</li>
+    </ul>
+
+    <h2>Downhill RBMCA 2020</h2>
+    <h3>Red Bull</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/kOHCoQm9mZY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <br>
+
+    <canvas id="meuCanvas"></canvas>
+
+    <script>
+        var canvas = document.getElementById("meuCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "red";
+        ctx.fillRect(20, 20, 75, 50);
+
+        //mudar a transparencia para 20%
+        ctx.globalAlpha = 0.4;
+        ctx.fillStyle = "blue";
+        ctx.fillRect(60, 60, 75, 50);
+
+        ctx.globalAlpha = 0.2;
+        ctx.fillStyle = "black";
+        ctx.fillRect(40, 40, 75, 50);
+    </script>
+
+    <footer>
+        <p>Autor: Lucas Felipe<br>
+            <a href="https://softgraf.com" target="_black">softgraf cursos avançados</a>
+        </p>
+    </footer>
+
+</body>
+</html>
